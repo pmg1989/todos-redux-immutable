@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const devServer = {
-  contentBase: __dirname + '/src/endpoint',
+  contentBase: __dirname + '/src',
   colors: true,
   quiet: false,
   noInfo: false,
@@ -23,11 +23,11 @@ module.exports = {
     app: [
       'webpack-dev-server/client?http://127.0.0.1:' + devServer.port,
       'webpack/hot/dev-server',
-      './app'
+      './'
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'src/endpoint/static'),
+    path: path.resolve(__dirname, 'src/static'),
     filename: '[name].js',
     publicPath: devServer.publicPath
   },
