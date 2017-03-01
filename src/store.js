@@ -6,8 +6,12 @@ import reducers from './reducers'
 
 const reducer = combineReducers(reducers)
 
-const store = createStore(reducer, Immutable.Map({}), compose(applyMiddleware(thunk), window.devToolsExtension
-  ? window.devToolsExtension()
-  : f => f))
+const store = createStore(reducer,
+  Immutable.Map({}),
+  compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
+)
 
 export default store
