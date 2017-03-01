@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import TaskForm from '../components/TaskForm'
@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
 
 @connect(selector, mapDispatchToProps)
 
-export default class App extends React.Component {
+export default class App extends Component {
 
   render() {
     const {tasks, taskCount, doneTaskCount, taskAdd, taskDone, taskUndone, taskRemove} = this.props
