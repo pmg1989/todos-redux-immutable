@@ -1,5 +1,5 @@
-import React from 'react';
-import classNames from 'classnames';
+import React from 'react'
+import classNames from 'classnames'
 
 export default class extends React.Component {
   static propTypes = {
@@ -8,47 +8,40 @@ export default class extends React.Component {
     onTaskDone: React.PropTypes.func.isRequired,
     onTaskUndone: React.PropTypes.func.isRequired,
     onTaskRemove: React.PropTypes.func.isRequired
-  };
+  }
 
   handleToggleStatus = () => {
-    const {
-      id,
-      done,
-      onTaskDone,
-      onTaskUndone
-    } = this.props;
+    const {id, done, onTaskDone, onTaskUndone} = this.props
 
     if (done) {
-      onTaskUndone(id);
+      onTaskUndone(id)
     } else {
-      onTaskDone(id);
+      onTaskDone(id)
     }
-  };
+  }
 
   handleRemoveStatus = () => {
-    const {
-      id,
-      onTaskRemove
-    } = this.props;
-    onTaskRemove(id);
-  };
+    const {id, onTaskRemove} = this.props
+    onTaskRemove(id)
+  }
 
-  render () {
-    const {
-      name,
-      done
-    } = this.props;
+  render() {
+    const {name, done} = this.props
 
-    const componentClassName = classNames('component-todo-item', {
-      'status-done': done
-    });
+    const componentClassName = classNames('component-todo-item', {'status-done': done})
 
-    return <div className={componentClassName}>
-      <span className='name'
-        style={{ textDecoration: done ? 'line-through' : 'none'
-    }}>{name}</span>
-  <div className='remove-status' onClick={this.handleRemoveStatus} />
-      <div className='toggle-status' onClick={this.handleToggleStatus} />
-    </div>;
+    return (
+      <div className={componentClassName}>
+        <span className='name'
+          style={{
+            textDecoration: done
+            ? 'line-through'
+            : 'none'
+          }}>{name}
+        </span>
+        <div className='remove-status' onClick={this.handleRemoveStatus}/>
+        <div className='toggle-status' onClick={this.handleToggleStatus}/>
+      </div>
+    )
   }
 }

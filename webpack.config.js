@@ -1,7 +1,5 @@
-/* eslint-disable */
-
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require('webpack')
+const path = require('path')
 
 const devServer = {
   contentBase: __dirname + '/src',
@@ -15,7 +13,7 @@ const devServer = {
 };
 
 module.exports = {
-  devtool: '#eval',//'inline-source-map',
+  devtool: '#eval', //'inline-source-map',
   debug: true,
   devServer,
   context: path.resolve(__dirname, 'src'),
@@ -44,17 +42,15 @@ module.exports = {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         loader: 'react-hot-loader'
-      },
-      {
+      }, {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader'
-      },
-      {
+      }, {
         test: /\.css/,
         include: path.resolve(__dirname, 'src'),
         loader: 'style-loader!css-loader'
       }
     ]
   }
-};
+}

@@ -1,21 +1,15 @@
-import {
-  createSelector
-} from 'reselect';
+import {createSelector} from 'reselect'
 
-const taskSelector = (state) => {
-  return state.getIn(['tasks', 'list']);
-};
+const taskSelector = (state) => state.getIn(['tasks', 'list'])
 
 const doneTaskSelector = createSelector([taskSelector], (tasks) => {
-  return tasks.filter((task) => {
-    return task.get('done');
-  });
-});
+  return tasks.filter((task) => task.get('done'))
+})
 
-export default (state) => {
+export default(state) => {
   return {
     doneTaskCount: doneTaskSelector(state).count(),
     taskCount: taskSelector(state).count(),
     tasks: taskSelector(state)
-  };
-};
+  }
+}
