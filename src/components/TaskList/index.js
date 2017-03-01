@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Immutable from 'immutable'
 import TaskItem from '../TaskItem'
 
-export default class extends React.Component {
+export default class extends Component {
   static propTypes = {
     tasks: React.PropTypes.instanceOf(Immutable.List).isRequired
   }

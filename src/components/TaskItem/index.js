@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import classNames from 'classnames'
 
-export default class extends React.Component {
+export default class extends Component {
   static propTypes = {
     done: React.PropTypes.bool.isRequired,
     id: React.PropTypes.number.isRequired,

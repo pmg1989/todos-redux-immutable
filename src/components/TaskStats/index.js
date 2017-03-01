@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-export default class extends React.Component {
+export default class extends Component {
   static propTypes = {
     taskCount: React.PropTypes.number.isRequired,
     undoneTaskCount: React.PropTypes.number.isRequired
