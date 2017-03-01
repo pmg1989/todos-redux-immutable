@@ -6,7 +6,8 @@ export default class extends React.Component {
     done: React.PropTypes.bool.isRequired,
     id: React.PropTypes.string.isRequired,
     onTaskDone: React.PropTypes.func.isRequired,
-    onTaskUndone: React.PropTypes.func.isRequired
+    onTaskUndone: React.PropTypes.func.isRequired,
+    onTaskRemove: React.PropTypes.func.isRequired
   };
 
   handleToggleStatus = () => {
@@ -24,6 +25,14 @@ export default class extends React.Component {
     }
   };
 
+  handleRemoveStatus = () => {
+    const {
+      id,
+      onTaskRemove
+    } = this.props;
+    onTaskRemove(id);
+  };
+
   render () {
     const {
       name,
@@ -38,6 +47,7 @@ export default class extends React.Component {
       <span className='name'
         style={{ textDecoration: done ? 'line-through' : 'none'
     }}>{name}</span>
+  <div className='remove-status' onClick={this.handleRemoveStatus} />
       <div className='toggle-status' onClick={this.handleToggleStatus} />
     </div>;
   }

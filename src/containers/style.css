@@ -50,11 +50,19 @@ body {
   width: 84px;
   height: 84px;
   cursor: pointer;
-  background: #F44336;
+  background: #4054B2;
 }
 
 .component-todo-item.status-done>.toggle-status {
   background: #4CAF50;
+}
+
+.component-todo-item>.remove-status {
+  float: right;
+  width: 84px;
+  height: 84px;
+  cursor: pointer;
+  background: #F44336;
 }
 
 .component-task-stats {

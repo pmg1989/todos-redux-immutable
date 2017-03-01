@@ -25,8 +25,18 @@ const taskUndone = (id) => {
   };
 };
 
+const taskRemove = (id) => {
+  return {
+    data: {
+      id
+    },
+    type: 'TASK_REMOVE'
+  };
+};
+
 export {
   taskAdd,
   taskDone,
-  taskUndone
+  taskUndone,
+  taskRemove
 };

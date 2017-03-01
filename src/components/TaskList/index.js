@@ -11,7 +11,8 @@ export default class extends React.Component {
     const {
       tasks,
       onTaskDone,
-      onTaskUndone
+      onTaskUndone,
+      onTaskRemove
     } = this.props;
 
     return <ul>{tasks.map((task) => {
@@ -22,6 +23,7 @@ export default class extends React.Component {
           name={task.get('name')}
           onTaskDone={onTaskDone}
           onTaskUndone={onTaskUndone}
+          onTaskRemove={onTaskRemove}
         />
       </li>;
     })}

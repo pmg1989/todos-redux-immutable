@@ -9,7 +9,8 @@ import selector from '../selector';
 import {
   taskAdd,
   taskDone,
-  taskUndone
+  taskUndone,
+  taskRemove
 } from '../actions';
 import './style.css';
 
@@ -26,6 +27,10 @@ class App extends React.Component {
     this.props.dispatch(taskUndone(id));
   };
 
+  handleTaskRemove = (id) => {
+    this.props.dispatch(taskRemove(id));
+  };
+
   render () {
     const {
       tasks,
@@ -40,6 +45,7 @@ class App extends React.Component {
       <TaskList
         onTaskDone={this.handleTaskDone}
         onTaskUndone={this.handleTaskUndone}
+        onTaskRemove={this.handleTaskRemove}
         tasks={tasks}
       />
       <TaskStats
