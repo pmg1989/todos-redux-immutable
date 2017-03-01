@@ -1,0 +1,9 @@
+{
+  "extends": "canonical",
+  "rules": {
+    "react/prop-types": 0,
+    "react/prefer-stateless-function": 0,
+    "import/no-namespace": 0,
+    "import/no-unassigned-import": 0
+  }
+}
