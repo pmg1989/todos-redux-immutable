@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
 
+const env = process.env.NODE_ENV
+
 const devServer = {
   contentBase: __dirname + '/src',
   colors: true,
@@ -9,7 +11,8 @@ const devServer = {
   publicPath: '/static/',
   port: 8000,
   hot: true,
-  stats: 'minimal'
+  stats: 'minimal',
+  historyApiFallback: true
 };
 
 module.exports = {
@@ -17,18 +20,35 @@ module.exports = {
   debug: true,
   devServer,
   context: path.resolve(__dirname, 'src'),
-  entry: {
-    app: [
-      'webpack-dev-server/client?http://127.0.0.1:' + devServer.port,
-      'webpack/hot/dev-server',
-      './'
-    ]
-  },
-  output: {
-    path: path.resolve(__dirname, 'src/static'),
-    filename: '[name].js',
-    publicPath: devServer.publicPath
-  },
+  entry: function() {
+    if(env === 'prod') {
+      return {
+        app: './index',
+        vendor: [ 'react', 'react-dom', 'react-redux', 'redux', 'reselect']
+      }
+    }
+    return {
+      app: [
+        'webpack-dev-server/client?http://127.0.0.1:' + devServer.port,
+        'webpack/hot/dev-server',
+        './'
+      ]
+    }
+  }(),
+  output: function(){
+    if(env === 'prod') {
+      return {
+        path: path.resolve(__dirname, 'public'),
+        filename: '[name].bundle.js?[hash]',
+        publicPath: './'
+      }
+    }
+    return {
+      path: path.resolve(__dirname, 'public'),
+      filename: '[name].js',
+      publicPath: devServer.publicPath
+    }
+  }(),
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
