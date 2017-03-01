@@ -7,7 +7,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const env = process.env.NODE_ENV
 
 const devServer = {
-  contentBase: __dirname + '/src',
   colors: true,
   quiet: false,
   noInfo: false,
@@ -19,14 +18,13 @@ const devServer = {
 
 module.exports = {
   devtool: '#eval', //'inline-source-map',
-  debug: true,
+  debug: env !== 'prod',
   devServer,
-  context: path.resolve(__dirname, 'src'),
   postcss: [ postcssCssnext({ browsers: ['last 2 versions'] }) ],
   entry: function() {
     if(env === 'prod') {
       return {
-        app: './index',
+        app: './src/index',
         vendor: [ 'react', 'react-dom', 'react-redux', 'redux', 'redux-create-reducer', 'redux-immutable', 'redux-thunk', 'immutable', 'reselect', 'classnames']
       }
     }
@@ -34,7 +32,7 @@ module.exports = {
       app: [
         'webpack-dev-server/client?http://127.0.0.1:' + devServer.port,
         'webpack/hot/dev-server',
-        './'
+        './src/index'
       ]
     }
   }(),
@@ -48,8 +46,8 @@ module.exports = {
     }
     return {
       path: path.resolve(__dirname, 'public'),
-      filename: '[name].js',
-      publicPath: '/static/'
+      filename: 'bundle.js',
+      publicPath: '/'
     }
   }(),
   plugins: function(){
@@ -62,7 +60,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js'}),
         new HtmlWebpackPlugin({
           title: 'todos-redux-immutable',
-          template: path.resolve(__dirname, 'src/template.html'),
+          template: path.resolve(__dirname, './index.html'),
           filename: `index.html`,
           minify:{    //压缩HTML文件
            removeComments:true,    //移除HTML中的注释
