@@ -1,4 +1,4 @@
-# `redux-immutable` examples
+# todos-redux-immutable
 
 This app demonstrates:
 
@@ -11,8 +11,8 @@ This app demonstrates:
 To launch the app:
 
 ```bash
-git clone git@github.com:gajus/redux-immutable-examples.git
-cd ./redux-immutable-examples
-npm install
-npm start
+git clone git@github.com:pmg1989/todos-redux-immutable.git
+cd ./todos-redux-immutable
+yarn or npm install
+yarn start or npm start
 ```
