@@ -1,5 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const postcssCssnext = require('postcss-cssnext')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const env = process.env.NODE_ENV
 
@@ -20,6 +23,7 @@ module.exports = {
   debug: true,
   devServer,
   context: path.resolve(__dirname, 'src'),
+  postcss: [ postcssCssnext({ browsers: ['last 2 versions'] }) ],
   entry: function() {
     if(env === 'prod') {
       return {
@@ -49,13 +53,33 @@ module.exports = {
       publicPath: devServer.publicPath
     }
   }(),
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.OldWatchingPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
+  plugins: function(){
+    if(env === 'prod') {
+      return [
+        new ExtractTextPlugin({filename: '[name].bundle.css?[hash]', allChunks: true }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.DefinePlugin({ 'process.env':{ 'NODE_ENV': JSON.stringify('production')} }),
+        new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
+        new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js'}),
+        new HtmlWebpackPlugin({
+          title: 'todos-redux-immutable',
+          template: path.resolve(__dirname, 'src/index.html'),
+          filename: `index.html`,
+          minify:{    //压缩HTML文件
+           removeComments:true,    //移除HTML中的注释
+           collapseWhitespace:true    //删除空白符与换行符
+          }
+        })
+      ]
+    }
+    return [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.OldWatchingPlugin(),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.NoErrorsPlugin()
+    ]
+  }(),
   module: {
     loaders: [
       {
