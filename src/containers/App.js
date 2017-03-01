@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import TaskForm from '../components/TaskForm'
 import TaskList from '../components/TaskList'
 import TaskStats from '../components/TaskStats'
@@ -7,34 +8,26 @@ import selector from '../selector'
 import {taskAdd, taskDone, taskUndone, taskRemove} from '../actions'
 import './style.css'
 
-class App extends React.Component {
-  handleTaskAdd = (name) => {
-    this.props.dispatch(taskAdd(name))
-  }
+const mapDispatchToProps = dispatch => ({
+  taskAdd: bindActionCreators(taskAdd, dispatch),
+  taskDone: bindActionCreators(taskDone, dispatch),
+  taskUndone: bindActionCreators(taskUndone, dispatch),
+  taskRemove: bindActionCreators(taskRemove, dispatch)
+})
 
-  handleTaskDone = (id) => {
-    this.props.dispatch(taskDone(id))
-  }
+@connect(selector, mapDispatchToProps)
 
-  handleTaskUndone = (id) => {
-    this.props.dispatch(taskUndone(id))
-  }
-
-  handleTaskRemove = (id) => {
-    this.props.dispatch(taskRemove(id))
-  }
+export default class App extends React.Component {
 
   render() {
-    const {tasks, taskCount, doneTaskCount} = this.props
+    const {tasks, taskCount, doneTaskCount, taskAdd, taskDone, taskUndone, taskRemove} = this.props
 
     return (
       <div id='viewport'>
-        <TaskForm onSave={this.handleTaskAdd}/>
-        <TaskList onTaskDone={this.handleTaskDone} onTaskUndone={this.handleTaskUndone} onTaskRemove={this.handleTaskRemove} tasks={tasks}/>
+        <TaskForm onSave={taskAdd}/>
+        <TaskList onTaskDone={taskDone} onTaskUndone={taskUndone} onTaskRemove={taskRemove} tasks={tasks}/>
         <TaskStats taskCount={taskCount} undoneTaskCount={taskCount - doneTaskCount}/>
       </div>
     )
   }
 }
-
-export default connect(selector)(App)
