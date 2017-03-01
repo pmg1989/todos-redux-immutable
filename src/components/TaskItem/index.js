@@ -4,7 +4,7 @@ import classNames from 'classnames';
 export default class extends React.Component {
   static propTypes = {
     done: React.PropTypes.bool.isRequired,
-    id: React.PropTypes.string.isRequired,
+    id: React.PropTypes.number.isRequired,
     onTaskDone: React.PropTypes.func.isRequired,
     onTaskUndone: React.PropTypes.func.isRequired,
     onTaskRemove: React.PropTypes.func.isRequired
