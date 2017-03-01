@@ -11,7 +11,6 @@ const devServer = {
   colors: true,
   quiet: false,
   noInfo: false,
-  publicPath: '/static/',
   port: 8000,
   hot: true,
   stats: 'minimal',
@@ -28,7 +27,7 @@ module.exports = {
     if(env === 'prod') {
       return {
         app: './index',
-        vendor: [ 'react', 'react-dom', 'react-redux', 'redux', 'reselect']
+        vendor: [ 'react', 'react-dom', 'react-redux', 'redux', 'redux-create-reducer', 'redux-immutable', 'redux-thunk', 'immutable', 'reselect', 'classnames']
       }
     }
     return {
@@ -50,7 +49,7 @@ module.exports = {
     return {
       path: path.resolve(__dirname, 'public'),
       filename: '[name].js',
-      publicPath: devServer.publicPath
+      publicPath: '/static/'
     }
   }(),
   plugins: function(){
@@ -63,7 +62,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js'}),
         new HtmlWebpackPlugin({
           title: 'todos-redux-immutable',
-          template: path.resolve(__dirname, 'src/index.html'),
+          template: path.resolve(__dirname, 'src/template.html'),
           filename: `index.html`,
           minify:{    //压缩HTML文件
            removeComments:true,    //移除HTML中的注释
@@ -77,7 +76,9 @@ module.exports = {
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.OldWatchingPlugin(),
       new webpack.optimize.DedupePlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
+      new ExtractTextPlugin({filename: '[name].css', allChunks: true }),
+      new HtmlWebpackPlugin({ title: 'todos-redux-immutable', template: './index.html' })
     ]
   }(),
   module: {
