@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import {createReducer} from 'redux-create-reducer'
 import Immutable from 'immutable'
-import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE, TASK_FILTER} from '../constants'
+import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE,TASK_EDIT , TASK_FILTER} from '../constants'
 
 const initialState = Immutable.fromJS({
   list: [
@@ -46,6 +46,11 @@ export default createReducer(initialState, {
   [TASK_REMOVE](state, action) {
     const index = state.get('list').findIndex((item) => item.get('id') === action.id)
     return state.deleteIn(['list', index])
+  },
+
+  [TASK_EDIT](state, action) {
+    const index = state.get('list').findIndex((item) => item.get('id') === action.id)
+    return state.setIn(['list', index, 'name'], action.name)
   },
 
   [TASK_FILTER](state, action) {

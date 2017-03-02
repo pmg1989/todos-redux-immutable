@@ -8,7 +8,7 @@ export default class extends Component {
   }
 
   render() {
-    const {tasks, onTaskDone, onTaskUndone, onTaskRemove} = this.props
+    const {tasks, onTaskDone, onTaskUndone, onTaskRemove, onTaskEdit} = this.props
 
     return (
       <ul>
@@ -21,6 +21,7 @@ export default class extends Component {
               onTaskDone={onTaskDone}
               onTaskUndone={onTaskUndone}
               onTaskRemove={onTaskRemove}
+              onTaskEdit={onTaskEdit}
             />
           </li>
         ))}

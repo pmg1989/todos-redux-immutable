@@ -24,7 +24,7 @@ body {
 .component-task-form input {
   display: block;
   font: inherit;
-  height: 50px;
+  height: 84px;
   width: 400px;
   padding: 0 18px;
   font-size: 20px;
@@ -34,18 +34,19 @@ body {
   display: none;
 }
 
-.component-todo-item {
+.component-todo-item > div{
   min-height: 84px;
   border-bottom: 1px solid #ccc;
 }
 
-.component-todo-item>.name {
+.component-todo-item .name {
   float: left;
-  padding: 30px 20px;
+  padding: 31px 20px;
   display: block;
+  width: 230px;
 }
 
-.component-todo-item>.toggle-status {
+.component-todo-item .toggle-status {
   float: right;
   width: 84px;
   height: 84px;
@@ -53,11 +54,11 @@ body {
   background: #4054B2;
 }
 
-.component-todo-item.status-done>.toggle-status {
+.component-todo-item.status-done .toggle-status {
   background: #4CAF50;
 }
 
-.component-todo-item>.remove-status {
+.component-todo-item .remove-status {
   float: right;
   width: 84px;
   height: 84px;

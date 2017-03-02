@@ -35,13 +35,14 @@ export default class extends Component {
           ))}
         </ul>
         <dl>
-          <dt>Total Tasks count:
-          </dt>
+          <dt>Total Tasks count:</dt>
           <dd>{taskCount}</dd>
           <dt>Active count:</dt>
           <dd>{undoneTaskCount}</dd>
           <dt>Completed count:</dt>
           <dd>{taskCount - undoneTaskCount}</dd>
+          <dt style={{marginTop: 20}}><i style={{color: 'red'}}>*</i> double click the task item to edit the task</dt>
+          <dd></dd>
         </dl>
       </div>
     )

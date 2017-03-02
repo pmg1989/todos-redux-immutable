@@ -17,7 +17,7 @@ const devServer = {
 };
 
 module.exports = {
-  devtool: '#eval', //'inline-source-map',
+  devtool: 'inline-source-map',
   debug: env !== 'prod',
   devServer,
   postcss: [ postcssCssnext({ browsers: ['last 2 versions'] }) ],

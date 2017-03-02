@@ -5,7 +5,7 @@ import TaskForm from '../components/TaskForm'
 import TaskList from '../components/TaskList'
 import TaskStats from '../components/TaskStats'
 import selector from '../selector'
-import {taskAdd, taskDone, taskUndone, taskRemove, taskFilter} from '../actions'
+import {taskAdd, taskDone, taskUndone, taskRemove, taskEdit, taskFilter} from '../actions'
 import './style.css'
 
 const mapDispatchToProps = dispatch => ({
@@ -13,6 +13,7 @@ const mapDispatchToProps = dispatch => ({
   taskDone: bindActionCreators(taskDone, dispatch),
   taskUndone: bindActionCreators(taskUndone, dispatch),
   taskRemove: bindActionCreators(taskRemove, dispatch),
+  taskEdit: bindActionCreators(taskEdit, dispatch),
   taskFilter: bindActionCreators(taskFilter, dispatch)
 })
 
@@ -21,12 +22,12 @@ const mapDispatchToProps = dispatch => ({
 export default class App extends Component {
 
   render() {
-    const {tasks, taskCount, doneTaskCount, filters, taskAdd, taskDone, taskUndone, taskRemove, taskFilter} = this.props
+    const {tasks, taskCount, doneTaskCount, filters, taskAdd, taskDone, taskUndone, taskRemove, taskEdit, taskFilter} = this.props
 
     return (
       <div id='viewport'>
         <TaskForm onSave={taskAdd}/>
-        <TaskList onTaskDone={taskDone} onTaskUndone={taskUndone} onTaskRemove={taskRemove} tasks={tasks}/>
+        <TaskList onTaskDone={taskDone} onTaskUndone={taskUndone} onTaskRemove={taskRemove} onTaskEdit={taskEdit} tasks={tasks}/>
         <TaskStats taskCount={taskCount} undoneTaskCount={taskCount - doneTaskCount} filters={filters} onTaskFilter={taskFilter}/>
       </div>
     )

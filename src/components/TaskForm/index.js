@@ -5,7 +5,7 @@ export default class extends Component {
     onSave: PropTypes.func.isRequired
   }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault()
 
     const name = this.textInput.value
@@ -17,11 +17,13 @@ export default class extends Component {
   }
 
   render() {
+    const {value, onBlur} = this.props
+
     return (
-      <form className='component-task-form' onSubmit={this.handleSubmit}>
-        <input ref={(input) => {
+      <form className='component-task-form' onSubmit={::this.handleSubmit}>
+        <input autoFocus ref={(input) => {
           this.textInput = input
-        }} type='text'/>
+        }} type='text' defaultValue={value} onBlur={onBlur}/>
         <button type='submit'>Save</button>
       </form>
     )
