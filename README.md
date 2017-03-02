@@ -18,6 +18,5 @@ yarn start or npm start
 ```
 
 Demo Url:
-```bash
+
 [https://pmg1989.github.io/todos-redux-immutable/](https://pmg1989.github.io/todos-redux-immutable/).
-```
