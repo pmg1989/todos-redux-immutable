@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {createReducer} from 'redux-create-reducer'
 import Immutable from 'immutable'
 
@@ -5,15 +6,15 @@ const initialState = Immutable.fromJS({
   list: [
     {
       done: true,
-      id: 1,
+      id: _.uniqueId(),
       name: 'foo'
     }, {
       done: false,
-      id: 2,
+      id: _.uniqueId(),
       name: 'bar'
     }, {
       done: false,
-      id: 3,
+      id: _.uniqueId(),
       name: 'baz'
     }
   ],
@@ -21,12 +22,12 @@ const initialState = Immutable.fromJS({
 })
 
 const TASK_ADD = (state, action) => {
-  const index = state.get('list').reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
+  const index = state.get('list').size //state.get('list').reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
   return state.mergeIn([
     'list', index
   ], {
     done: false,
-    id: index + 1,
+    id: _.uniqueId(),
     name: action.data.name
   })
 }
