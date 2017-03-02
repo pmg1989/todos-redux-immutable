@@ -20,7 +20,7 @@ yarn start or npm start
 To build the app:
 
 ```bash
-yarn build
+yarn build or npm build
 ```
 
 Demo Url:
