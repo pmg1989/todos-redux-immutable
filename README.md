@@ -17,6 +17,12 @@ yarn or npm install
 yarn start or npm start
 ```
 
+To build the app:
+
+```bash
+yarn build
+```
+
 Demo Url:
 
 [https://pmg1989.github.io/todos-redux-immutable/](https://pmg1989.github.io/todos-redux-immutable/).
