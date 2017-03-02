@@ -65,9 +65,27 @@ body {
   background: #F44336;
 }
 
-.component-task-stats {
-  overflow: hidden;
-  height: 84px;
+.filter-list {
+  display: flex;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.filter-list li {
+  flex: 1;
+}
+
+.filter-list li span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px 0;
+  width: 90px;
+}
+
+.filter-list li .active {
+  color: red;
+  border:1px solid red;
+  border-radius: 3px;
 }
 
 .component-task-stats dl {

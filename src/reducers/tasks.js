@@ -18,7 +18,7 @@ const initialState = Immutable.fromJS({
       name: 'baz'
     }
   ],
-  filter: 'ALL'
+  filter: 'All'
 })
 
 const TASK_ADD = (state, action) => {
@@ -51,9 +51,14 @@ const TASK_REMOVE = (state, action) => {
   return state.deleteIn(['list', index])
 }
 
+const TASK_FILTER = (state, action) => {
+  return state.setIn(['filter'], action.data.filter)
+}
+
 export default createReducer(initialState, {
   TASK_ADD,
   TASK_DONE,
   TASK_UNDONE,
-  TASK_REMOVE
+  TASK_REMOVE,
+  TASK_FILTER
 })

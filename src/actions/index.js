@@ -26,9 +26,17 @@ const taskRemove = (id) => {
   }
 }
 
+const taskFilter = (filter) => {
+  return {
+    data: { filter },
+    type: 'TASK_FILTER'
+  }
+}
+
 export {
   taskAdd,
   taskDone,
   taskUndone,
-  taskRemove
+  taskRemove,
+  taskFilter
 }
