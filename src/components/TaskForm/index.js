@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React, {PropTypes, Component} from 'react'
 
 export default class extends Component {
   static propTypes = {
-    onSave: React.PropTypes.func.isRequired
+    onSave: PropTypes.func.isRequired
   }
 
   handleSubmit = (event) => {

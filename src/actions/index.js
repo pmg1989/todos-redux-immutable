@@ -1,42 +1,11 @@
-const taskAdd = (name) => {
-  return {
-    data: { name },
-    type: 'TASK_ADD'
-  }
-}
+import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE, TASK_FILTER} from '../constants'
 
-const taskDone = (id) => {
-  return {
-    data: { id },
-    type: 'TASK_DONE'
-  }
-}
+export const taskAdd = name => ({name, type: TASK_ADD})
 
-const taskUndone = (id) => {
-  return {
-    data: { id },
-    type: 'TASK_UNDONE'
-  }
-}
+export const taskDone = id => ({id, type: TASK_DONE})
 
-const taskRemove = (id) => {
-  return {
-    data: { id },
-    type: 'TASK_REMOVE'
-  }
-}
+export const taskUndone = id => ({id, type: TASK_UNDONE})
 
-const taskFilter = (filter) => {
-  return {
-    data: { filter },
-    type: 'TASK_FILTER'
-  }
-}
+export const taskRemove = id => ({id, type: TASK_REMOVE})
 
-export {
-  taskAdd,
-  taskDone,
-  taskUndone,
-  taskRemove,
-  taskFilter
-}
+export const taskFilter = filters => ({filters, type: TASK_FILTER})

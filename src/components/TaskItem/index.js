@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
+import React, {PropTypes, Component} from 'react'
 import classNames from 'classnames'
 
 export default class extends Component {
   static propTypes = {
-    done: React.PropTypes.bool.isRequired,
-    id: React.PropTypes.string.isRequired,
-    onTaskDone: React.PropTypes.func.isRequired,
-    onTaskUndone: React.PropTypes.func.isRequired,
-    onTaskRemove: React.PropTypes.func.isRequired
+    done: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    onTaskDone: PropTypes.func.isRequired,
+    onTaskUndone: PropTypes.func.isRequired,
+    onTaskRemove: PropTypes.func.isRequired
   }
 
   handleToggleStatus = () => {

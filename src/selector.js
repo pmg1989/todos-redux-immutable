@@ -6,12 +6,9 @@ const taskFilterSelector = state => state.getIn(['tasks', 'filter'])
 
 const taskVisibleSelector = createSelector([taskSelector, taskFilterSelector], (tasks, filters) => {
   switch (filters) {
-    case 'All':
-      return tasks
-    case 'Active':
-      return tasks.filter(t => !t.get('done'))
-    case 'Completed':
-      return tasks.filter(t => t.get('done'))
+    case 'All': return tasks
+    case 'Active': return tasks.filter(t => !t.get('done'))
+    case 'Completed': return tasks.filter(t => t.get('done'))
   }
 })
 
