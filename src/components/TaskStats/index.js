@@ -35,12 +35,13 @@ export default class extends Component {
           ))}
         </ul>
         <dl>
-          <dt>Task count:
+          <dt>Total Tasks count:
           </dt>
           <dd>{taskCount}</dd>
-
-          <dt>Undone task count:</dt>
+          <dt>Active count:</dt>
           <dd>{undoneTaskCount}</dd>
+          <dt>Completed count:</dt>
+          <dd>{taskCount - undoneTaskCount}</dd>
         </dl>
       </div>
     )

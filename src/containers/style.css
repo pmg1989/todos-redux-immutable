@@ -92,6 +92,7 @@ body {
   display: block;
   overflow: hidden;
   padding: 20px;
+  text-align: right;
 }
 
 .component-task-stats dt, .component-task-stats dd {}
