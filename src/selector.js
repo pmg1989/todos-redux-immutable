@@ -1,8 +1,8 @@
 import {createSelector} from 'reselect'
 
-const taskSelector = state => state.getIn(['tasks', 'list'])
+const taskSelector = state => state.get('list')
 
-const taskFilterSelector = state => state.getIn(['tasks', 'filter'])
+const taskFilterSelector = state => state.get('filter')
 
 const taskVisibleSelector = createSelector([taskSelector, taskFilterSelector], (tasks, filters) => {
   switch (filters) {
@@ -18,9 +18,9 @@ const doneTaskSelector = createSelector([taskSelector], tasks => {
 
 export default state => {
   return {
-    doneTaskCount: doneTaskSelector(state).count(),
-    taskCount: taskSelector(state).count(),
-    tasks: taskVisibleSelector(state),
-    filters: taskFilterSelector(state)
+    tasks: taskVisibleSelector(state.get('tasks')),
+    filters: taskFilterSelector(state.get('tasks')),
+    taskCount: taskSelector(state.get('tasks')).count(),
+    doneTaskCount: doneTaskSelector(state.get('tasks')).count()
   }
 }
