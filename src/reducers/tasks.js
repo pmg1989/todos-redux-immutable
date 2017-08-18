@@ -2,7 +2,9 @@ import _ from 'lodash'
 import {createReducer} from 'redux-create-reducer'
 import Immutable from 'immutable'
 import {combineReducers} from 'redux-immutable'
-import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE,TASK_EDIT , TASK_FILTER} from '../constants'
+import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE,TASK_EDIT , TASK_FILTER, FILTER_TITLES} from '../constants'
+
+const {ALL} = FILTER_TITLES
 
 const initialState = Immutable.fromJS({
   list: [
@@ -20,7 +22,7 @@ const initialState = Immutable.fromJS({
       name: 'baz'
     }
   ],
-  filter: 'All'
+  filter: ALL
 })
 
 const list = createReducer(initialState.get("list"), {
