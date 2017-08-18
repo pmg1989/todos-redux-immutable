@@ -6,7 +6,7 @@ const taskSelector = state => state.get('list')
 const taskFilterSelector = state => state.get('filter')
 
 const { ALL, ACTIVE, COMPLETED } = FILTER_TITLES
-console.log(ALL, ACTIVE, COMPLETED);
+
 const taskVisibleSelector = createSelector([taskSelector, taskFilterSelector], (tasks, filters) => {
   switch (filters) {
     case ALL: return tasks
