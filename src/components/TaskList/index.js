@@ -4,24 +4,25 @@ import TaskItem from '../TaskItem'
 
 export default class extends Component {
   static propTypes = {
-    tasks: PropTypes.instanceOf(Immutable.List).isRequired
+    tasks: PropTypes.instanceOf(Immutable.List).isRequired,
+    onTaskDone: PropTypes.func.isRequired,
+    onTaskUndone: PropTypes.func.isRequired,
+    onTaskRemove: PropTypes.func.isRequired,
+    onTaskEdit: PropTypes.func.isRequired
   }
 
   render() {
-    const {tasks, onTaskDone, onTaskUndone, onTaskRemove, onTaskEdit} = this.props
+    const {tasks, ...onProps} = this.props
 
     return (
       <ul>
         {tasks.map((task) => (
           <li key={task.get('id')}>
             <TaskItem
-              done={task.get('done')}
               id={task.get('id')}
               name={task.get('name')}
-              onTaskDone={onTaskDone}
-              onTaskUndone={onTaskUndone}
-              onTaskRemove={onTaskRemove}
-              onTaskEdit={onTaskEdit}
+              done={task.get('done')}
+              {...onProps}
             />
           </li>
         ))}
