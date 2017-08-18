@@ -1,14 +1,17 @@
 import {createSelector} from 'reselect'
+import {FILTER_TITLES} from './constants'
 
 const taskSelector = state => state.get('list')
 
 const taskFilterSelector = state => state.get('filter')
 
+const { ALL, ACTIVE, COMPLETED } = FILTER_TITLES
+console.log(ALL, ACTIVE, COMPLETED);
 const taskVisibleSelector = createSelector([taskSelector, taskFilterSelector], (tasks, filters) => {
   switch (filters) {
-    case 'All': return tasks
-    case 'Active': return tasks.filter(t => !t.get('done'))
-    case 'Completed': return tasks.filter(t => t.get('done'))
+    case ALL: return tasks
+    case ACTIVE: return tasks.filter(t => !t.get('done'))
+    case COMPLETED: return tasks.filter(t => t.get('done'))
   }
 })
 

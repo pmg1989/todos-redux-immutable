@@ -10,7 +10,7 @@ export const TASK_REMOVE = 'TASK_REMOVE'
 export const TASK_FILTER = 'TASK_FILTER'
 
 export const FILTER_TITLES = {
-  ALL: 'All',
-  ACTIVE: 'Active',
-  COMPLETED: 'Completed'
+  ALL: 'ALL',
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED'
 }
