@@ -15,6 +15,10 @@ export default class extends Component {
     onTaskFilter(filters)
   }
 
+  renderCapitalize(str) {
+    return str.charAt(0) + str.slice(1).toLowerCase()
+  }
+
   render() {
     const {taskCount, doneTaskCount, filters} = this.props
     return (
@@ -23,7 +27,7 @@ export default class extends Component {
           {Object.keys(FILTER_TITLES).map((item, key) => (
             <li key={key}>
               <span className={classNames({'active': filters === FILTER_TITLES[item]})} onClick={() => this.handleTaskFilter(FILTER_TITLES[item])}>
-                {FILTER_TITLES[item]}
+                {this.renderCapitalize(FILTER_TITLES[item])}
               </span>
             </li>
           ))}
