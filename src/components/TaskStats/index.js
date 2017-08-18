@@ -11,7 +11,7 @@ const FILTER_TITLES = {
 export default class extends Component {
   static propTypes = {
     taskCount: PropTypes.number.isRequired,
-    undoneTaskCount: PropTypes.number.isRequired,
+    doneTaskCount: PropTypes.number.isRequired,
     filters: PropTypes.string.isRequired,
     onTaskFilter: PropTypes.func.isRequired
   }
@@ -22,7 +22,7 @@ export default class extends Component {
   }
 
   render() {
-    const {taskCount, undoneTaskCount, filters} = this.props
+    const {taskCount, doneTaskCount, filters} = this.props
     return (
       <div className='component-task-stats'>
         <ul className='filter-list'>
@@ -38,9 +38,9 @@ export default class extends Component {
           <dt>Total Tasks count:</dt>
           <dd>{taskCount}</dd>
           <dt>Active count:</dt>
-          <dd>{undoneTaskCount}</dd>
+          <dd>{taskCount - doneTaskCount}</dd>
           <dt>Completed count:</dt>
-          <dd>{taskCount - undoneTaskCount}</dd>
+          <dd>{doneTaskCount}</dd>
           <dt style={{marginTop: 20}}><i style={{color: 'red'}}>*</i> double click the task item to edit the task</dt>
           <dd></dd>
         </dl>

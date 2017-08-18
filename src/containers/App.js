@@ -9,12 +9,12 @@ import {taskAdd, taskDone, taskUndone, taskRemove, taskEdit, taskFilter} from '.
 import './style.css'
 
 const mapDispatchToProps = dispatch => ({
-  taskAdd: bindActionCreators(taskAdd, dispatch),
-  taskDone: bindActionCreators(taskDone, dispatch),
-  taskUndone: bindActionCreators(taskUndone, dispatch),
-  taskRemove: bindActionCreators(taskRemove, dispatch),
-  taskEdit: bindActionCreators(taskEdit, dispatch),
-  taskFilter: bindActionCreators(taskFilter, dispatch)
+  onTaskAdd: bindActionCreators(taskAdd, dispatch),
+  onTaskDone: bindActionCreators(taskDone, dispatch),
+  onTaskUndone: bindActionCreators(taskUndone, dispatch),
+  onTaskRemove: bindActionCreators(taskRemove, dispatch),
+  onTaskEdit: bindActionCreators(taskEdit, dispatch),
+  onTaskFilter: bindActionCreators(taskFilter, dispatch)
 })
 
 @connect(selector, mapDispatchToProps)
@@ -22,13 +22,28 @@ const mapDispatchToProps = dispatch => ({
 export default class App extends Component {
 
   render() {
-    const {tasks, taskCount, doneTaskCount, filters, taskAdd, taskDone, taskUndone, taskRemove, taskEdit, taskFilter} = this.props
+    const { tasks, taskCount, doneTaskCount, filters, onTaskAdd, onTaskDone, onTaskUndone, onTaskRemove, onTaskEdit, onTaskFilter } = this.props
+
+    const taskListProps = {
+      tasks,
+      onTaskEdit,
+      onTaskDone,
+      onTaskUndone,
+      onTaskRemove
+    }
+
+    const taskStatsProps = {
+      filters,
+      taskCount,
+      doneTaskCount,
+      onTaskFilter
+    }
 
     return (
       <div id='viewport'>
-        <TaskForm onSave={taskAdd}/>
-        <TaskList onTaskDone={taskDone} onTaskUndone={taskUndone} onTaskRemove={taskRemove} onTaskEdit={taskEdit} tasks={tasks}/>
-        <TaskStats taskCount={taskCount} undoneTaskCount={taskCount - doneTaskCount} filters={filters} onTaskFilter={taskFilter}/>
+        <TaskForm onSave={onTaskAdd}/>
+        <TaskList {...taskListProps}/>
+        <TaskStats {...taskStatsProps}/>
       </div>
     )
   }
