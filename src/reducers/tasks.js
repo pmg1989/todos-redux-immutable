@@ -6,26 +6,23 @@ import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE,TASK_EDIT , TASK_FILTER, F
 
 const {ALL} = FILTER_TITLES
 
-const initialState = Immutable.fromJS({
-  list: [
-    {
-      done: true,
-      id: _.uniqueId(),
-      name: 'foo'
-    }, {
-      done: false,
-      id: _.uniqueId(),
-      name: 'bar'
-    }, {
-      done: false,
-      id: _.uniqueId(),
-      name: 'baz'
-    }
-  ],
-  filter: ALL
-})
+const $list = Immutable.fromJS([
+  {
+    done: true,
+    id: _.uniqueId(),
+    name: 'foo'
+  }, {
+    done: false,
+    id: _.uniqueId(),
+    name: 'bar'
+  }, {
+    done: false,
+    id: _.uniqueId(),
+    name: 'baz'
+  }
+])
 
-const list = createReducer(initialState.get("list"), {
+const list = createReducer($list, {
   [TASK_ADD](state, action) {
     const index = state.size //state.reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
     return state.mergeIn([index], {
@@ -56,7 +53,9 @@ const list = createReducer(initialState.get("list"), {
   },
 })
 
-const filter = createReducer(initialState.get("filter"), {
+const $filter = Immutable.fromJS(ALL)
+
+const filter = createReducer($filter, {
   [TASK_FILTER](state, action) {
     return action.filters
   }
