@@ -10,7 +10,7 @@ const devServer = {
   colors: true,
   quiet: false,
   noInfo: false,
-  port: 8000,
+  port: 8080,
   hot: true,
   stats: 'minimal',
   historyApiFallback: true
