@@ -5,4 +5,4 @@ export {
   taskRemove,
   taskEdit,
   taskFilter
-} from './tasks'
+} from './tasks-action'

@@ -27,7 +27,7 @@ export default class extends Component {
   handleTaskEdit(name) {
     const {id, onTaskEdit} = this.props
     this.changeEditState()
-    onTaskEdit(id, name)
+    onTaskEdit({id, name})
   }
 
   handleToggleStatus() {
