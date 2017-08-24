@@ -10,4 +10,4 @@ export const taskRemove = id => ({id, type: TASK_REMOVE})
 
 export const taskEdit = ({id, name}) => ({id, name, type: TASK_EDIT})
 
-export const taskFilter = filters => ({filters, type: TASK_FILTER})
+export const taskFilter = filter => ({filter, type: TASK_FILTER})

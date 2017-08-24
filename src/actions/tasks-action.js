@@ -9,10 +9,10 @@ export const {
   taskEdit,
   taskFilter
 } = createActions({
-  [TASK_ADD]: name => name,
-  [TASK_DONE]: id => id,
-  [TASK_UNDONE]: id => id,
-  [TASK_REMOVE]: id => id,
+  [TASK_ADD]: name => ({name}),
+  [TASK_DONE]: id => ({id}),
+  [TASK_UNDONE]: id => ({id}),
+  [TASK_REMOVE]: id => ({id}),
   [TASK_EDIT]: ({id, name}) => ({id, name}),
-  [TASK_FILTER]: filter => filter
+  [TASK_FILTER]: filter => ({filter})
 })

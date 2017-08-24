@@ -57,7 +57,7 @@ const $filter = Immutable.fromJS(ALL)
 
 const filter = createReducer($filter, {
   [TASK_FILTER](state, action) {
-    return action.filters
+    return action.filter
   }
 })
 
