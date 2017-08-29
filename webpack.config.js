@@ -13,7 +13,8 @@ const devServer = {
   port: 8080,
   hot: true,
   stats: 'minimal',
-  historyApiFallback: true
+  historyApiFallback: true,
+  disableHostCheck: true
 };
 
 module.exports = {
@@ -30,7 +31,7 @@ module.exports = {
     }
     return {
       app: [
-        'webpack-dev-server/client?http://127.0.0.1:' + devServer.port,
+        'webpack-dev-server/client?http://0.0.0.0:' + devServer.port,
         'webpack/hot/dev-server',
         './src/index'
       ]

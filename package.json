@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --host 0.0.0.0",
     "build": "cross-env NODE_ENV=prod webpack",
     "lint": "eslint ./src",
     "precommit": "npm run lint"
