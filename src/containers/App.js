@@ -44,6 +44,7 @@ export default class App extends Component {
         <TaskForm onSave={onTaskAdd}/>
         <TaskList {...taskListProps}/>
         <TaskStats {...taskStatsProps}/>
+        {this.props.children}
       </div>
     )
   }
