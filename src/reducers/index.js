@@ -1,5 +1,5 @@
 import routerReducer from './routeReducer'
-import tasks from './tasks-reducer'
+import tasks from './tasks'
 
 export default {
   tasks,
