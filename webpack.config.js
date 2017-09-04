@@ -54,7 +54,7 @@ module.exports = {
   plugins: function(){
     if(env === 'prod') {
       return [
-        new ExtractTextPlugin({filename: '[name].bundle.css?[hash]', allChunks: true }),
+        new ExtractTextPlugin('style.css', { allChunks: true }),
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({ 'process.env':{ 'NODE_ENV': JSON.stringify('production')} }),
         new webpack.optimize.UglifyJsPlugin({ minimize: true, compress: { warnings: false } }),
@@ -76,7 +76,8 @@ module.exports = {
       new webpack.OldWatchingPlugin(),
       new webpack.optimize.DedupePlugin(),
       new webpack.NoErrorsPlugin(),
-      new ExtractTextPlugin({filename: '[name].css', allChunks: true }),
+      // new ExtractTextPlugin({filename: '[name].css', allChunks: true }),
+      new ExtractTextPlugin('style.css', { allChunks: true }),
       new HtmlWebpackPlugin({ title: 'todos-redux-immutable', template: './index.html' })
     ]
   }(),
@@ -91,10 +92,14 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader'
       }, {
-        test: /\.css/,
-        include: path.resolve(__dirname, 'src'),
-        loader: 'style-loader!css-loader'
-      }
-    ]
+        test: /\.less$/,
+        exclude: path.resolve(__dirname, 'node_modules'),
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!less-loader')
+      }, {
+        test: /\.css$/,
+        exclude: path.resolve(__dirname, 'node_modules'),
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      },
+    ],
   }
 }
