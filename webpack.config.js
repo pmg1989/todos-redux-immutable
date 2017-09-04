@@ -21,7 +21,6 @@ module.exports = {
   devtool: 'inline-source-map',
   debug: env !== 'prod',
   devServer,
-  postcss: [ postcssCssnext({ browsers: ['last 2 versions'] }) ],
   entry: function() {
     if(env === 'prod') {
       return {
@@ -101,5 +100,6 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
     ],
-  }
+  },
+  postcss: [ postcssCssnext({ browsers: ['last 2 versions'] }) ],
 }
