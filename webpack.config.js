@@ -3,6 +3,7 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const postcssCssnext = require('postcss-cssnext')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
 
 const env = process.env.NODE_ENV
 
@@ -93,13 +94,16 @@ module.exports = {
       }, {
         test: /\.less$/,
         exclude: path.resolve(__dirname, 'node_modules'),
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!less-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?-autoprefixer&modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!less-loader')
       }, {
         test: /\.css$/,
         exclude: path.resolve(__dirname, 'node_modules'),
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?-autoprefixer')
       },
     ],
   },
-  postcss: [ postcssCssnext({ browsers: ['last 2 versions'] }) ],
+  postcss: [ postcssCssnext({ browsers: [
+    "iOS >= 8" ,
+    "Android >= 4"
+  ] }) ],
 }
