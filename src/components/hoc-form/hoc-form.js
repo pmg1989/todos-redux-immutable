@@ -8,7 +8,7 @@ function hocForm (WrappedComponent) {
       this.state = { fields: {} }
     }
 
-    getField (fieldName) {
+    setField (fieldName) {
       if (!this.state.fields[fieldName]) {
         this.state.fields[fieldName] = {
           value: '',
@@ -42,7 +42,7 @@ function hocForm (WrappedComponent) {
 
     render () {
       const props = Object.assign({}, this.props, {
-        fields: this.getField.bind(this),
+        fields: this.setField.bind(this),
         getFields: this.getFields.bind(this),
       })
       return (
