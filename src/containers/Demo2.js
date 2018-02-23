@@ -31,7 +31,9 @@ class Demo2 extends React.Component {
         <form onSubmit={::this.submit}>
           <label htmlFor="name">
             Name：
-            <input type="text" id="name" {...fields('name')} />
+            <input type="text" id="name" {...fields('name', {
+              initialValue: 'john',
+            })} />
           </label><br />
           <label htmlFor="name">
             Email：

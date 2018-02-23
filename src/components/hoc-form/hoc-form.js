@@ -9,10 +9,10 @@ function hocForm (WrappedComponent) {
       fields: {},
     }
 
-    setField (fieldName) {
+    setField (fieldName, params = { initialValue: '' }) {
       if (!this.state.fields[fieldName]) {
         this.state.fields[fieldName] = {
-          value: '',
+          value: params.initialValue,
           onChange: (event) => {
             this.state.fields[fieldName].value = event.target.value
             this.forceUpdate()
