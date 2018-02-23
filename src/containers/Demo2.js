@@ -33,7 +33,8 @@ class Demo2 extends React.Component {
             Name：
             <input type="text" id="name" {...fields('name', {
               initialValue: 'john',
-            })} />
+            })}
+            />
           </label><br />
           <label htmlFor="name">
             Email：
