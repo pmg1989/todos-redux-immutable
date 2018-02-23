@@ -1,14 +1,18 @@
 import React from 'react'
 import { compose } from 'redux'
+// import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import HocForm from '../components/hoc-form'
-// import { IIHOC as DebuggerHOC, stringify, getDisplayName } from './ii_debug'
+import { HocForm, HocDebug } from '../components/Hoc-form'
 
 
 class Demo2 extends React.Component {
   static propTypes = {
     fields: PropTypes.func.isRequired,
     getFields: PropTypes.func.isRequired,
+  }
+
+  componentDidMount () {
+    console.log(this.props)
   }
 
   submit (e) {
@@ -21,13 +25,7 @@ class Demo2 extends React.Component {
     console.log(getFields())
     return (
       <div>
-        <h2>
-          Wrapped Component
-        </h2>
-        <p>
-          Props
-        </p>
-        {/* <pre>{stringify(this.props)}</pre> */}
+        <h4>Wrapped Component</h4>
         <form onSubmit={this.submit.bind(this)}>
           <label htmlFor="name">
             Name：
@@ -47,6 +45,7 @@ class Demo2 extends React.Component {
 // export default HocForm(Example)
 export default compose(
   // 这些都是单参数的高阶组件
-  // DebuggerHOC,
-  HocForm
+  // connect(),
+  HocDebug,
+  HocForm,
 )(Demo2)

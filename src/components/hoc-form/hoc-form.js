@@ -1,7 +1,8 @@
 import React from 'react'
+import { getDisplayName } from './'
 
-function HocForm (WrappedComponent) {
-  class PP extends React.Component {
+function hocForm (WrappedComponent) {
+  class HocForm extends React.Component {
     constructor (props) {
       super(props)
       this.state = { fields: {} }
@@ -45,14 +46,17 @@ function HocForm (WrappedComponent) {
         getFields: this.getFields.bind(this),
       })
       return (
-        <WrappedComponent {...props} />
+        <div>
+          <h3>HOC Form Component</h3>
+          <WrappedComponent {...props} />
+        </div>
       )
     }
     }
 
-//   PP.displayName = `PP(${getDisplayName(WrappedComponent)})`
+  HocForm.displayName = `HocForm(${getDisplayName(WrappedComponent)})`
 
-  return PP
+  return HocForm
 }
 
-export default HocForm
+export default hocForm
