@@ -3,9 +3,10 @@ import { getDisplayName } from './'
 
 function hocForm (WrappedComponent) {
   class HocForm extends React.Component {
-    constructor (props) {
-      super(props)
-      this.state = { fields: {} }
+    static displayName = `HocForm(${getDisplayName(WrappedComponent)})`
+
+    state = {
+      fields: {},
     }
 
     setField (fieldName) {
@@ -41,10 +42,11 @@ function hocForm (WrappedComponent) {
     }
 
     render () {
-      const props = Object.assign({}, this.props, {
-        fields: this.setField.bind(this),
-        getFields: this.getFields.bind(this),
-      })
+      const props = {
+        ...this.props,
+        fields: ::this.setField,
+        getFields: ::this.getFields,
+      }
       return (
         <div>
           <h3>HOC Form Component</h3>
@@ -53,8 +55,6 @@ function hocForm (WrappedComponent) {
       )
     }
     }
-
-  HocForm.displayName = `HocForm(${getDisplayName(WrappedComponent)})`
 
   return HocForm
 }

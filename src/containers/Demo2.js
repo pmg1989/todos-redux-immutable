@@ -28,7 +28,7 @@ class Demo2 extends React.Component {
         <h4>Wrapped Component</h4>
         <p>Props fields</p>
         <pre>{stringify(this.props.getFields())}</pre>
-        <form onSubmit={this.submit.bind(this)}>
+        <form onSubmit={::this.submit}>
           <label htmlFor="name">
             Name：
             <input type="text" id="name" {...fields('name')} />

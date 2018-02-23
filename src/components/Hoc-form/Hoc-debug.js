@@ -3,6 +3,8 @@ import { stringify, getDisplayName } from './'
 
 export default function hocDebug (WrappedComponent) {
   class HocDebug extends WrappedComponent {
+    static displayName = `HocDebug(${getDisplayName(WrappedComponent)})`
+
     render () {
       return (
         <div>
@@ -15,7 +17,6 @@ export default function hocDebug (WrappedComponent) {
         </div>
       )
     }
-    }
-  HocDebug.displayName = `HocDebug(${getDisplayName(WrappedComponent)})`
+  }
   return HocDebug
 }
