@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Demo2 extends Component {
-  render() {
-    return (
-      <div>
-        i am demo2
-      </div>
-    )
-  }
+const Demo2 = () => {
+  return (
+    <div>
+      i am demo 2
+    </div>
+  )
 }
+
+export default Demo2

@@ -4,5 +4,5 @@ export {
   taskUndone,
   taskRemove,
   taskEdit,
-  taskFilter
+  taskFilter,
 } from './tasks'

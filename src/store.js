@@ -1,5 +1,5 @@
-import {createStore, applyMiddleware, compose} from 'redux'
-import {combineReducers} from 'redux-immutable'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { combineReducers } from 'redux-immutable'
 import thunk from 'redux-thunk'
 import Immutable from 'immutable'
 import reducers from './reducers'

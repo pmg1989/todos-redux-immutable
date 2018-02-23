@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { Router, browserHistory } from 'react-router'
 
@@ -9,8 +9,8 @@ import store from './store'
 
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState (state) {
-      return state.get('routing').toJS()
-  }
+    return state.get('routing').toJS()
+  },
 })
 
 ReactDOM.render(

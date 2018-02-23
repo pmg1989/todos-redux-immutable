@@ -3,7 +3,7 @@
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0",
     "build": "cross-env NODE_ENV=prod webpack",
-    "lint": "eslint ./src",
+    "lint": "eslint --fix --ext .js src",
     "precommit": "npm run lint"
   },
   "devDependencies": {
@@ -20,8 +20,11 @@
     "chai": "^3.5.0",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
-    "eslint": "^3.13.1",
-    "eslint-config-canonical": "^6.1.0",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",

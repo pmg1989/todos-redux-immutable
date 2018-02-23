@@ -1,54 +1,54 @@
 import _ from 'lodash'
-import {createReducer} from 'redux-create-reducer'
+import { createReducer } from 'redux-create-reducer'
 import Immutable from 'immutable'
-import {combineReducers} from 'redux-immutable'
-import {TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE,TASK_EDIT , TASK_FILTER, FILTER_TITLES} from '../constants'
+import { combineReducers } from 'redux-immutable'
+import { TASK_ADD, TASK_DONE, TASK_UNDONE, TASK_REMOVE, TASK_EDIT, TASK_FILTER, FILTER_TITLES } from '../constants'
 
-const {ALL} = FILTER_TITLES
+const { ALL } = FILTER_TITLES
 
 const $list = Immutable.fromJS([
   {
     done: true,
     id: _.uniqueId(),
-    name: 'foo'
+    name: 'foo',
   }, {
     done: false,
     id: _.uniqueId(),
-    name: 'bar'
+    name: 'bar',
   }, {
     done: false,
     id: _.uniqueId(),
-    name: 'baz'
-  }
+    name: 'baz',
+  },
 ])
 
 const list = createReducer($list, {
-  [TASK_ADD](state, action) {
-    const index = state.size //state.reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
+  [TASK_ADD] (state, action) {
+    const index = state.size // state.reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
     return state.mergeIn([index], {
       done: false,
       id: _.uniqueId(),
-      name: action.name
+      name: action.name,
     })
   },
 
-  [TASK_DONE](state, action) {
-    const index = state.findIndex((item) => item.get('id') === action.id)
+  [TASK_DONE] (state, action) {
+    const index = state.findIndex(item => item.get('id') === action.id)
     return state.setIn([index, 'done'], true)
   },
 
-  [TASK_UNDONE](state, action) {
-    const index = state.findIndex((item) => item.get('id') === action.id)
+  [TASK_UNDONE] (state, action) {
+    const index = state.findIndex(item => item.get('id') === action.id)
     return state.setIn([index, 'done'], false)
   },
 
-  [TASK_REMOVE](state, action) {
-    const index = state.findIndex((item) => item.get('id') === action.id)
+  [TASK_REMOVE] (state, action) {
+    const index = state.findIndex(item => item.get('id') === action.id)
     return state.deleteIn([index])
   },
 
-  [TASK_EDIT](state, action) {
-    const index = state.findIndex((item) => item.get('id') === action.id)
+  [TASK_EDIT] (state, action) {
+    const index = state.findIndex(item => item.get('id') === action.id)
     return state.setIn([index, 'name'], action.name)
   },
 })
@@ -56,12 +56,12 @@ const list = createReducer($list, {
 const $filter = Immutable.fromJS(ALL)
 
 const filter = createReducer($filter, {
-  [TASK_FILTER](state, action) {
+  [TASK_FILTER] (state, action) {
     return action.filter
-  }
+  },
 })
 
 export default combineReducers({
   list,
-  filter
+  filter,
 })

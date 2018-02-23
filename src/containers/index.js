@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router'
+import React from 'react'
+import { Link } from 'react-router'
+import PropTypes from 'prop-types'
 
-export default class extends Component {
-  render () {
-    return (
+const Index = ({ children }) => {
+  return (
     <div>
       <p>
         <strong>App</strong>&nbsp;
@@ -11,7 +11,13 @@ export default class extends Component {
         <Link to="/demo">demo</Link>&nbsp;
         <Link to="/demo2">demo2</Link>
       </p>
-      {this.props.children}
-    </div>)
-  }
+      {children}
+    </div>
+  )
 }
+
+Index.propTypes = {
+  children: PropTypes.node.isRequired,
+}
+
+export default Index

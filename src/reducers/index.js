@@ -3,5 +3,5 @@ import tasks from './tasks'
 
 export default {
   tasks,
-  routing: routerReducer
+  routing: routerReducer,
 }
