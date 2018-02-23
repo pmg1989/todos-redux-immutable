@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'redux'
 // import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { HocForm, HocDebug } from '../components/Hoc-form'
+import { hocForm, hocDebug, stringify } from '../components/Hoc-form'
 
 
 class Demo2 extends React.Component {
@@ -21,11 +21,13 @@ class Demo2 extends React.Component {
   }
 
   render () {
-    const { fields, getFields } = this.props
-    console.log(getFields())
+    const { fields } = this.props
+
     return (
       <div>
         <h4>Wrapped Component</h4>
+        <p>Props fields</p>
+        <pre>{stringify(this.props.getFields())}</pre>
         <form onSubmit={this.submit.bind(this)}>
           <label htmlFor="name">
             Name：
@@ -33,7 +35,7 @@ class Demo2 extends React.Component {
           </label><br />
           <label htmlFor="name">
             Email：
-            <input type="email" id="name" {...fields('email')} />
+            <input type="text" id="name" {...fields('email')} />
           </label><br />
           <input type="submit" value="submit" />
         </form>
@@ -42,10 +44,9 @@ class Demo2 extends React.Component {
   }
 }
 
-// export default HocForm(Example)
 export default compose(
-  // 这些都是单参数的高阶组件
+  // 单参数的高阶组件
   // connect(),
-  HocDebug,
-  HocForm,
+  hocDebug,
+  hocForm,
 )(Demo2)

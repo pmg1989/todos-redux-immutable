@@ -1,5 +1,5 @@
-import HocForm from './Hoc-form'
-import HocDebug from './Hoc-debug'
+import hocForm from './Hoc-form'
+import hocDebug from './Hoc-debug'
 
 export function getDisplayName (WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component'
@@ -17,6 +17,6 @@ export function stringify (value) {
 }
 
 export {
-  HocForm,
-  HocDebug,
+  hocForm,
+  hocDebug,
 }
