@@ -45,7 +45,8 @@
     "ecmaVersion": 8,
     "ecmaFeatures": {
       "jsx": true,
-      "experimentalObjectRestSpread": true
+      "experimentalObjectRestSpread": true,
+      "classes": true
     }
   },
   "settings": {
