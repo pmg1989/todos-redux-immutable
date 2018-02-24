@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'redux'
 // import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { hocForm, hocDebug, stringify } from '../components/Hoc-form'
+import { hocForm, InputItem, hocDebug, stringify } from '../components/Hoc-form'
 
 
 class Demo2 extends React.Component {
@@ -29,17 +29,12 @@ class Demo2 extends React.Component {
         <p>Props fields</p>
         <pre>{stringify(this.props.getFields())}</pre>
         <form onSubmit={::this.submit}>
-          <label htmlFor="name">
-            Name：
-            <input type="text" id="name" {...fields('name', {
-              initialValue: 'john',
-            })}
-            />
-          </label><br />
-          <label htmlFor="email">
-            Email：
-            <input type="text" id="email" {...fields('email')} />
-          </label><br />
+          <InputItem label="name" {...fields('name')} />
+          <InputItem label="email" {...fields('email', {
+            initialValue: '972401854@qq.com',
+          })}
+          />
+          <InputItem label="phone" {...fields('phone')} />
           <input type="submit" value="submit" />
         </form>
       </div>

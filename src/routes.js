@@ -11,7 +11,7 @@ const routes = (
   <Route path="/">
     <IndexRoute component={App} />
     <Route path="/demo1" component={Demo} />
-    <Route path="/demo2" component={Demo2} />
+    <Route path="/hoc-form" component={Demo2} />
   </Route>
 )
 
