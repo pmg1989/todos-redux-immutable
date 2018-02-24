@@ -36,9 +36,9 @@ class Demo2 extends React.Component {
             })}
             />
           </label><br />
-          <label htmlFor="name">
+          <label htmlFor="email">
             Email：
-            <input type="text" id="name" {...fields('email')} />
+            <input type="text" id="email" {...fields('email')} />
           </label><br />
           <input type="submit" value="submit" />
         </form>
