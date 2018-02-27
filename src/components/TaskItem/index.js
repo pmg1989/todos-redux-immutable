@@ -5,7 +5,7 @@ import TaskForm from '../TaskForm'
 
 export default class extends Component {
   static propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     done: PropTypes.bool.isRequired,
     onTaskDone: PropTypes.func.isRequired,

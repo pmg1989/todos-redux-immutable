@@ -5,4 +5,5 @@ export {
   taskRemove,
   taskEdit,
   taskFilter,
+  fetchTaskList,
 } from './tasks'
