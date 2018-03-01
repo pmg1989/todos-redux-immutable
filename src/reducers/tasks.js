@@ -13,10 +13,11 @@ const list = createReducer($list, {
   },
 
   [TASK_ADD] (state, action) {
-    const index = state.reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
+    const index = state.size
+    const id = state.reduce((maxId, item) => Math.max(item.get('id'), maxId), -1)
     return state.mergeIn([index], {
       done: false,
-      id: index + 1,
+      id: id + 1,
       name: action.name,
     })
   },
