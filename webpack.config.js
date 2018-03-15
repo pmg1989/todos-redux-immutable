@@ -70,6 +70,7 @@ module.exports = {
       ]
     }
     return [
+      new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.OldWatchingPlugin(),

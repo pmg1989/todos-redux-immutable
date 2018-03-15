@@ -13,6 +13,13 @@ const history = syncHistoryWithStore(browserHistory, store, {
   },
 })
 
+if (module.hot) {
+  module.hot.accept('./reducers', () => {
+    const nextRootReducer = require('./reducers')
+    store.replaceReducer(nextRootReducer)
+  })
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history} routes={routes} />
